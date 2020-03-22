@@ -7,4 +7,5 @@ int main()
 {
     Star star;
     star.InitReqLev();
+    star.InitTarget();
 }
