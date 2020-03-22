@@ -3,3 +3,8 @@
 
 using namespace std;
 
+void Star::StarForce()
+{
+    int currentStar = 0;
+    
+}

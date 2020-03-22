@@ -20,6 +20,7 @@ public:
     void InitMVP();
     void DoStarCatch();
     void InitOIP();
+    void StarForce();
 };
 
 inline void Star::InitReqLev()
