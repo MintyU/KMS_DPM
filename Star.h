@@ -11,12 +11,15 @@ private:
     int MVP;
     char ynstarcatch;
     bool Starcatch;
+    unsigned long long Meso;
+    unsigned int OriginalItemPrice;
 
 public:
     void InitReqLev();
     void InitTarget();
     void InitMVP();
     void DoStarCatch();
+    void InitOIP();
 };
 
 inline void Star::InitReqLev()
@@ -152,4 +155,12 @@ inline void Star::DoStarCatch()
         Star::DoStarCatch();
     }
 }
+
+inline void Star::InitOIP()
+{
+    cout << "Please enter the original price of item(lowest price in oction)\n: ";
+    cin >> OriginalItemPrice;
+    Meso = OriginalItemPrice;
+}
+
 #endif
