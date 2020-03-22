@@ -1,4 +1,4 @@
-# KMS_StarSimul
+# KMS_StarSimul v1.0
 
 - Project using C++
 

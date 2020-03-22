@@ -9,6 +9,7 @@ private:
     int ReqLev;
     int Target;
     int MVP;
+    char ynstarcatch;
     bool Starcatch;
 
 public:
@@ -93,6 +94,7 @@ inline void Star::InitTarget()
             Star::InitTarget();
         }
         break;
+
     case 160:
         cout << "(160Lev item can be enchanted up to 25)\n: ";
         cin >> Target;
@@ -102,6 +104,7 @@ inline void Star::InitTarget()
             Star::InitTarget();
         }
         break;
+
     case 200:
         cout << "(200Lev item can be enchanted up to 25)\n: ";
         cin >> Target;
@@ -118,4 +121,35 @@ inline void Star::InitTarget()
     }
 }
 
+inline void Star::InitMVP()
+{
+    cout << "Please enter your MVP Rank\nNone, Bronze: 0\nSilver      : 1\nGold        : 2\nDiamond, Red: 3\n: ";
+    cin >> MVP;
+    if (MVP > 3)
+    {
+        cout << "It's not a Valid number. ";
+        Star::InitMVP();
+    }
+}
+
+inline void Star::DoStarCatch()
+{
+    cout << "You wanna do StarCatch?(probability 4.5%p rises)(y/n)\n: ";
+    cin >> ynstarcatch;
+    if (ynstarcatch == 'y' || ynstarcatch == 'Y')
+    {
+        Starcatch = true;
+        cout << "Starcatch True \n";
+    }
+    else if (ynstarcatch == 'n' || ynstarcatch == 'N')
+    {
+        Starcatch = false;
+        cout << "Starcatch False \n";
+    }
+    else
+    {
+        cout << "It's not a Valid number. ";
+        Star::DoStarCatch();
+    }
+}
 #endif
