@@ -1,6 +1,8 @@
 #include <iostream>
 #include "Star.h"
 #include <cstdlib>
+#include <random>
+#include <ctime>
 
 using namespace std;
 
@@ -60,7 +62,20 @@ const int price[25][8] =
         {0, 0, 0, 0, 73102200, 89912300, 109120000, 213124000},
         {0, 0, 0, 0, 81620200, 100389000, 121834900, 237957700}};
 
+void Star::InitReqLev()
+{
+    cout << "Please enter Item Required Level(ex:100, 110, 120, 130, 140, 150, 160, 200) \n: ";
+    cin >> ReqLev;
+    if (ReqLev < 100 || ReqLev > 200 || ReqLev % 10 != 0 || (ReqLev >= 161 && ReqLev <= 199))
+    {
+        cout << "It's not a Valid number. ";
+        Star::InitReqLev();
+    }
+}
+
 void Star::StarForce()
 {
     int currentStar = 0;
+    srand((unsigned int)time(NULL));
+    cout << (rand() % 1000 / 10);
 }

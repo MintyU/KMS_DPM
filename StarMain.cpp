@@ -10,4 +10,6 @@ int main()
     star.InitTarget();
     star.InitMVP();
     star.DoStarCatch();
+    star.InitOIP();
+    // star.StarForce();
 }
