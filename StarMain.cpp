@@ -11,5 +11,5 @@ int main()
     star.InitMVP();
     star.DoStarCatch();
     star.InitOIP();
-    // star.StarForce();
+    star.StarForce();
 }
