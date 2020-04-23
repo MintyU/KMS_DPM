@@ -267,6 +267,9 @@ void Star::StarForce()
         if (STACK == 2)
         {
             currentStar += 1;
+            cout << "CHANCETIME!" << endl;
+            cout << "+" << currentStar << " SUCCESS" << endl;
+            STACK = 0;
             continue;
         } // chance time!
 
@@ -301,4 +304,5 @@ void Star::StarForce()
             continue;
         }
     }
+    cout << "Total " << Meso << "meso Used!";
 }
