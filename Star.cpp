@@ -33,7 +33,7 @@ const float prob[25][4] =
         {3, 0, 77.6, 19.4},
         {2, 0, 68.6, 29.4},
         {1, 0, 59.4, 39.6}};
-        
+
 const int price[25][8] =
     {
         {41000, 54200, 70100, 88900, 110800, 136000, 164800, 321000},
@@ -72,7 +72,6 @@ void Star::InitReqLev()
         Star::InitReqLev();
     }
 }
-
 
 void Star::InitTarget()
 {
@@ -165,25 +164,6 @@ void Star::InitTarget()
     }
 }
 
-
-void Star::StarForce()
-{
-    int currentStar = 0;
-    srand((unsigned int)time(NULL));
-    cout << (rand() % 1000 / 10);
-}
-
-void Star::InitMVP()
-{
-    cout << "Please enter your MVP Rank\nNone, Bronze: 0\nSilver      : 1\nGold        : 2\nDiamond, Red: 3\n: ";
-    cin >> MVP;
-    if (MVP > 3)
-    {
-        cout << "It's not a Valid number. ";
-        Star::InitMVP();
-    }
-}
-
 void Star::DoStarCatch()
 {
     cout << "You wanna do StarCatch?(probability 4.5%p rises)(y/n)\n: ";
@@ -212,12 +192,113 @@ void Star::InitOIP()
     Meso = OriginalItemPrice;
 }
 
+// temporary
 void Star::Valuecheck()
 {
-    cout << endl << ReqLev << endl;
+    cout << endl
+         << ReqLev << endl;
     cout << Target << endl;
     cout << MVP << endl;
     cout << ynstarcatch << endl;
     cout << Starcatch << endl;
+}
 
+void Star::InitMVP()
+{
+    cout << "Please enter your MVP Rank\nNone, Bronze: 0\nSilver      : 1\nGold        : 2\nDiamond, Red: 3\n: ";
+    cin >> MVP;
+    if (MVP > 3)
+    {
+        cout << "It's not a Valid number. ";
+        Star::InitMVP();
+    }
+}
+
+void Star::StarForce()
+{
+    int currentStar = 0;
+    float SCBONUS = 0;
+    int LEVEL = 0;
+    int STACK = 0;
+    Meso = 0;
+    if (Starcatch)
+    {
+        SCBONUS = 4.5;
+    }
+    if (ReqLev == 100)
+    {
+        LEVEL = 0;
+    }
+    else if (ReqLev == 110)
+    {
+        LEVEL = 1;
+    }
+    else if (ReqLev == 120)
+    {
+        LEVEL = 2;
+    }
+    else if (ReqLev == 130)
+    {
+        LEVEL = 3;
+    }
+    else if (ReqLev == 140)
+    {
+        LEVEL = 4;
+    }
+    else if (ReqLev == 150)
+    {
+        LEVEL = 5;
+    }
+    else if (ReqLev == 160)
+    {
+        LEVEL = 6;
+    }
+    else if (ReqLev == 200)
+    {
+        LEVEL = 7;
+    }
+    srand((unsigned int)time(NULL));
+    cout << "STARFORCE START" << endl;
+    // cout << (rand() % 1000 / 10);
+    while (currentStar < Target)
+    {
+        float randomnum = (rand() % 1000 / 10);
+        Meso += price[currentStar][LEVEL];
+        if (STACK == 2)
+        {
+            currentStar += 1;
+            continue;
+        } // chance time!
+
+        if (randomnum <= prob[currentStar][0] + SCBONUS)
+        {
+            currentStar += 1;
+            STACK = 0;
+            cout << "+" << currentStar << " SUCCESS" << endl;
+            continue;
+        }
+
+        if (randomnum <= prob[currentStar][0] + prob[currentStar][1])
+        {
+            cout << "+" << currentStar + 1 << " FAIL(maintain)" << endl;
+            continue;
+        }
+
+        if (randomnum <= prob[currentStar][0] + prob[currentStar][1] + prob[currentStar][2])
+        {
+            cout << "+" << currentStar << " FAIL(degrade)" << endl;
+            currentStar -= 1;
+            STACK += 1;
+            continue;
+        }
+
+        if (randomnum <= prob[currentStar][0] + prob[currentStar][1] + prob[currentStar][2] + prob[currentStar][3])
+        {
+            cout << "+" << currentStar << " FAIL(DESTROYED)" << endl;
+            currentStar = 12;
+            STACK = 0;
+            Meso += OriginalItemPrice;
+            continue;
+        }
+    }
 }
