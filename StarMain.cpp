@@ -12,4 +12,5 @@ int main()
     star.DoStarCatch();
     star.InitOIP();
     star.StarForce();
+    star.Valuecheck();
 }
