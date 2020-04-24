@@ -263,7 +263,23 @@ void Star::StarForce()
     while (currentStar < Target)
     {
         float randomnum = (rand() % 1000 / 10);
-        Meso += price[currentStar][LEVEL];
+        if (MVP == 0)
+        {
+            Meso += price[currentStar][LEVEL];
+        }
+        else if (MVP == 1)
+        {
+            Meso += price[currentStar][LEVEL] * 97 / 100;
+        }
+        else if (MVP == 2)
+        {
+            Meso += price[currentStar][LEVEL] * 95 / 100;
+        }
+        else if (MVP == 3)
+        {
+            Meso += price[currentStar][LEVEL] * 90 / 100;
+        }
+
         if (STACK == 2)
         {
             currentStar += 1;
