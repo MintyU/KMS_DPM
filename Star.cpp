@@ -180,7 +180,8 @@ void Star::DoStarCatch()
     }
     else
     {
-        cout << "It's not a Valid number. ";
+        cout << "It's not a Valid Value. ";
+        cin.ignore(100, '\n');
         Star::DoStarCatch();
     }
 }
@@ -189,6 +190,13 @@ void Star::InitOIP()
 {
     cout << "Please enter the original price of item(lowest price in oction)\n: ";
     cin >> OriginalItemPrice;
+    if (!cin)
+    {
+        cout << "It's not a NUMBER. ";
+        cin.clear();
+        cin.ignore(100, '\n');
+        Star::InitOIP();
+    }
     Meso = OriginalItemPrice;
 }
 
@@ -207,9 +215,19 @@ void Star::InitMVP()
 {
     cout << "Please enter your MVP Rank\nNone, Bronze: 0\nSilver      : 1\nGold        : 2\nDiamond, Red: 3\n: ";
     cin >> MVP;
-    if (MVP > 3 || MVP < 0)
+    if (!cin)
+    {
+        cout << "It's not a NUMBER. ";
+        cin.clear();
+        cin.ignore(100, '\n');
+        Star::InitMVP();
+    }
+    
+    if (!(MVP <= 3 && MVP >= 0))
     {
         cout << "It's not a Valid number. ";
+        cin.clear();
+        cin.ignore(100, '\n');
         Star::InitMVP();
     }
 }
