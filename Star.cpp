@@ -207,7 +207,7 @@ void Star::InitMVP()
 {
     cout << "Please enter your MVP Rank\nNone, Bronze: 0\nSilver      : 1\nGold        : 2\nDiamond, Red: 3\n: ";
     cin >> MVP;
-    if (MVP > 3)
+    if (MVP > 3 || MVP < 0)
     {
         cout << "It's not a Valid number. ";
         Star::InitMVP();
