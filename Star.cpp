@@ -220,6 +220,7 @@ void Star::StarForce()
     float SCBONUS = 0;
     int LEVEL = 0;
     int STACK = 0;
+    int DESTROY = 0;
     Meso = 0;
     if (Starcatch)
     {
@@ -316,9 +317,11 @@ void Star::StarForce()
             cout << "+" << currentStar << " FAIL(DESTROYED)" << endl;
             currentStar = 12;
             STACK = 0;
+            DESTROY += 1;
             Meso += OriginalItemPrice;
             continue;
         }
     }
-    cout << "Total " << Meso << "meso Used!";
+    cout << "Total " << Meso << "meso Used!" << endl;
+    cout << "Item Destroyed " << DESTROY << " time(s)!";
 }
